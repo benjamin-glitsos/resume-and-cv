@@ -26,6 +26,9 @@
 
 % Options --------------------
 
+\input{glyphtounicode}
+\pdfgentounicode=1
+
 \DeclareOption{draft}{\overfullrule=5pt}
 \ProcessOptions\relax
 
