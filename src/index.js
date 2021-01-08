@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const match = require("switchcase");
 const { STATE } = require("./state");
 const { metadata } = require("./metadata");
-const { logNumber, argSettingOrDefault } = require("./utilities");
+const { quote, logNumber, argSettingOrDefault } = require("./utilities");
 
 const data = (() => {
     const commandLineArguments = process.argv.slice(2);
@@ -24,33 +24,35 @@ const data = (() => {
         jobTypes.BA
     );
 
-    const documentNameText = match({
+    const output = {};
+
+    output.documentNameText = match({
         [documentTypes.CV]: "CV",
         default: "Resume"
     })(documentType);
 
-    const documentNameLatex = match({
+    output.documentNameLatex = match({
         [documentTypes.CV]: "CURRICULUM VITAE",
         default: String.raw`R\'{E}SUM\'{E}`
     })(documentType);
 
-    const outputPath = "./output/output.tex";
-
-    return { outputPath, documentNameLatex };
+    return output;
 })();
 
 try {
+    const outputPath = `./output/${data.documentNameText} of Benjamin Glitsos.tex`;
+
     const template = fs.readFileSync(
         "./resources/template.mustache.tex",
         "utf8"
     );
 
     fs.writeFileSync(
-        data.outputPath,
+        outputPath,
         Mustache.render(template, data, {}, metadata.mustache.customTags)
     );
 
-    console.log(logNumber() + chalk`Wrote to {blue ${data.outputPath}}`);
+    console.log(logNumber() + chalk`Wrote to {blue ${outputPath}}`);
 } catch (error) {
     console.error(error);
 }
