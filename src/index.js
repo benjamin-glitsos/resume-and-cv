@@ -95,7 +95,7 @@ try {
 
     console.log(logNumber() + chalk`Wrote to {blue ${outputPathTex}}`);
 
-    // execSync(`pdflatex ${outputPathPdf}`);
+    execSync(`pdflatex "${outputPathTex}"`);
 
     console.log(logNumber() + chalk`Wrote to {blue ${outputPathPdf}}`);
 } catch (error) {
