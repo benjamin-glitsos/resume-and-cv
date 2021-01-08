@@ -1,10 +1,10 @@
 const chalk = require("chalk");
 const { STATE } = require("./state");
-const { settings } = require("./settings");
+const { metadata } = require("./metadata");
 
 module.exports.logNumber = () =>
     chalk`{magenta.bold ${
-        settings.general.programName
+        metadata.general.programName
     } (${STATE.taskNumber++}):} `;
 
 module.exports.argSettingOrDefault = (

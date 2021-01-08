@@ -1,13 +1,13 @@
-module.exports.settings = {
+module.exports.metadata = {
     general: {
         programName: "Resume & CV"
     },
     selections: {
-        documentType: {
+        documentTypes: {
             RESUME: "res",
             CV: "cv"
         },
-        jobType: {
+        jobTypes: {
             BA: "ba",
             PM: "pm",
             QA: "qa"
