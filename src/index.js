@@ -8,6 +8,7 @@ const { metadata } = require("./metadata");
 const { identity, logNumber, argSettingOrDefault } = require("./utilities");
 
 try {
+    Mustache.tags = metadata.mustache.customTags;
     Mustache.escape = identity;
 
     const data = (() => {
@@ -29,29 +30,38 @@ try {
 
         const output = {};
 
-        output.documentNameText = match({
+        output.documentName = match({
             [documentTypes.CV]: "CV",
             default: "Resume"
         })(documentType);
 
-        output.documentNameLatex = match({
+        output.headerName = match({
             [documentTypes.CV]: "CURRICULUM VITAE",
             default: String.raw`R\'{E}SUM\'{E}`
         })(documentType);
+
+        output.topItems = (() => {
+            const items = [
+                "Business analysis for an information system of an ASX50 company.",
+                "Project management of large-scale web developments along with ERP integration."
+            ];
+
+            return match({
+                [jobTypes.PM]: items.slice().reverse(),
+                [jobTypes.QA]: items.slice().reverse(),
+                default: items
+            })(jobType);
+        })();
 
         return output;
     })();
 
     const templatePath = "./resources/template.mustache.tex";
-    const outputPath = `./output/${data.documentNameText} of Benjamin Glitsos.tex`;
-    const mustacheSettings = metadata.mustache.customTags;
+    const outputPath = `./output/${data.documentName} of Benjamin Glitsos.tex`;
 
     const template = fs.readFileSync(templatePath, "utf8");
 
-    fs.writeFileSync(
-        outputPath,
-        Mustache.render(template, data, {}, mustacheSettings)
-    );
+    fs.writeFileSync(outputPath, Mustache.render(template, data));
 
     console.log(logNumber() + chalk`Wrote to {blue ${outputPath}}`);
 } catch (error) {
