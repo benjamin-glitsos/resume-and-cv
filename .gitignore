@@ -3,3 +3,4 @@
 *.log
 *.aux
 node_modules/
+output/*
