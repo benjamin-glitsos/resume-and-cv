@@ -8,6 +8,7 @@ const { logNumber } = require("./utilities");
 
 const data = (() => {
     const arguments = process.argv.slice(2);
+    // TODO: check if list contains any item of the settings.selections and if so use that item otherwise if not use the default. Create a custom utility to handle this logic.
 
     const documentType = arguments;
 
@@ -19,7 +20,10 @@ const data = (() => {
 })();
 
 try {
-    const template = fs.readFileSync("./src/template.mustache.tex", "utf8");
+    const template = fs.readFileSync(
+        "./resources/template.mustache.tex",
+        "utf8"
+    );
 
     fs.writeFileSync(
         data.outputPath,
