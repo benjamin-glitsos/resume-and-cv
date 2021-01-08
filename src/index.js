@@ -2,33 +2,9 @@ const fs = require("fs");
 const Mustache = require("mustache");
 const { execSync } = require("child_process");
 const chalk = require("chalk");
-
-const STATE = {
-    taskNumber: 1
-};
-
-const settings = {
-    general: {
-        programName: "Resume Templater"
-    },
-    selections: {
-        documentType: {
-            RESUME: "res",
-            CV: "cv"
-        },
-        jobType: {
-            BA: "ba",
-            PM: "pm",
-            QA: "qa"
-        }
-    },
-    mustache: {
-        customTags: ["<&", "&>"]
-    }
-};
-
-const logNumber = () =>
-    chalk`{magenta.bold ${settings.general.programName.toUpperCase()} (${STATE.taskNumber++}):} `;
+const { STATE } = require("./state");
+const { settings } = require("./settings");
+const { logNumber } = require("./utilities");
 
 const data = (() => {
     const arguments = process.argv.slice(2);
