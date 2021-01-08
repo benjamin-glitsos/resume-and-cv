@@ -17,7 +17,7 @@
     },
     "homepage": "https://github.com/benjamin-glitsos/resume-and-cv#readme",
     "dependencies": {
-        "commander": "^6.2.1",
+        "command-exists": "^1.2.9",
         "mustache": "^4.1.0"
     }
 }
