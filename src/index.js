@@ -1,13 +1,14 @@
 const fs = require("fs");
 const Mustache = require("mustache");
 var commandExistsSync = require("command-exists").sync;
+const { execSync } = require("child_process");
 
 const metadata = {
     paths: {
         templateFile: "./src/index.mustache.tex",
         outputDir: "./output/"
     },
-    enums: {
+    options: {
         documentType: {
             RESUME: "res",
             CV: "cv"
@@ -26,6 +27,8 @@ const metadata = {
 const data = (() => {
     const arguments = process.argv.slice(2);
 
+    const documentType = arguments;
+
     const outputPath = metadata.paths.outputDir + "output.tex";
 
     const documentName = "CURRICULUM VITAE";
@@ -43,11 +46,11 @@ if (Object.values(metadata.paths).map(fs.existsSync)) {
 
     console.log(`Wrote to ${data.outputPath}`);
 } else {
-    console.error("Source or output paths were not found.");
+    console.error("One or more source or output paths were not found.");
 }
 
 if (commandExistsSync("pdflatex")) {
-    // proceed
+    execSync(`pdflatex ${data.outputPath}`);
 } else {
     console.error("`pdflatex` command not found in your PATH.");
 }
