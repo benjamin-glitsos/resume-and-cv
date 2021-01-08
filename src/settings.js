@@ -1,6 +1,6 @@
 module.exports.settings = {
     general: {
-        programName: "Resume Templater"
+        programName: "Resume & CV"
     },
     selections: {
         documentType: {

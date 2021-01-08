@@ -4,13 +4,16 @@ const { execSync } = require("child_process");
 const chalk = require("chalk");
 const { STATE } = require("./state");
 const { settings } = require("./settings");
-const { logNumber } = require("./utilities");
+const { logNumber, argSettingOrDefault } = require("./utilities");
 
 const data = (() => {
-    const arguments = process.argv.slice(2);
-    // TODO: check if list contains any item of the settings.selections and if so use that item otherwise if not use the default. Create a custom utility to handle this logic.
+    const commandLineArguments = process.argv.slice(2);
 
-    const documentType = arguments;
+    const documentType = argSettingOrDefault(
+        commandLineArguments,
+        settings.selections.documentType,
+        settings.selections.documentType.RESUME
+    );
 
     const outputPath = "./output/output.tex";
 

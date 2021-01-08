@@ -3,4 +3,14 @@ const { STATE } = require("./state");
 const { settings } = require("./settings");
 
 module.exports.logNumber = () =>
-    chalk`{magenta.bold ${settings.general.programName.toUpperCase()} (${STATE.taskNumber++}):} `;
+    chalk`{magenta.bold ${
+        settings.general.programName
+    } (${STATE.taskNumber++}):} `;
+
+module.exports.argSettingOrDefault = (
+    commandLineArguments,
+    selections,
+    defaultVal
+) =>
+    commandLineArguments.find(el => Object.values(selections).includes(el)) ||
+    defaultVal;
