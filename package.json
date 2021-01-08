@@ -1,0 +1,23 @@
+{
+  "name": "resume-and-cv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamin-glitsos/resume-and-cv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamin-glitsos/resume-and-cv/issues"
+  },
+  "homepage": "https://github.com/benjamin-glitsos/resume-and-cv#readme",
+  "dependencies": {
+    "commander": "^6.2.1",
+    "handlebars": "^4.7.6"
+  }
+}
