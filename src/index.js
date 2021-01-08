@@ -45,10 +45,22 @@ try {
             default: String.raw`R\'{E}SUM\'{E}`
         })(documentType);
 
-        output.introduction = match({
-            default:
-                "Three years' experience in account management involving business analysis and project management of web applications and information systems. Skilled in written and verbal communication and driven by a strong passion for technology."
-        })(jobType);
+        output.introduction = (() => {
+            const BAIntro =
+                "Two years' experience in business analysis and project management of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
+
+            const PMIntro =
+                "Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
+
+            const QAIntro =
+                "Two years' experience in quality assurance and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
+
+            return match({
+                [jobTypes.PM]: PMIntro,
+                [jobTypes.QA]: QAIntro,
+                default: BAIntro
+            })(jobType);
+        })();
 
         output.topItems = (() => {
             const items = [
