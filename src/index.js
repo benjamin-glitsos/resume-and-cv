@@ -9,7 +9,7 @@ const { metadata } = require("./metadata");
 const {
     identity,
     reverse,
-    logNumber,
+    logOutput,
     argSettingOrDefault
 } = require("./utilities");
 
@@ -93,11 +93,11 @@ try {
 
     fs.writeFileSync(outputPathTex, Mustache.render(template, data));
 
-    console.log(logNumber() + chalk`Wrote to {blue ${outputPathTex}}`);
+    logOutput(outputPathTex);
 
     execSync(`pdflatex "${outputPathTex}"`);
 
-    console.log(logNumber() + chalk`Wrote to {blue ${outputPathPdf}}`);
+    logOutput(outputPathPdf);
 } catch (error) {
     console.error(error);
 }
