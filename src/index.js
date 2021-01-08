@@ -1,3 +1,4 @@
+const path = require("path");
 const fs = require("fs");
 const Mustache = require("mustache");
 const { execSync } = require("child_process");
@@ -78,8 +79,12 @@ try {
         return output;
     })();
 
-    const templatePath = "./resources/template.mustache.tex";
-    const outputPath = `./output/${data.documentName} of Benjamin Glitsos.tex`;
+    const templatePath = path.join(".", "resources", "template.mustache.tex");
+    const outputPath = path.join(
+        ".",
+        "output",
+        `${data.documentName} of Benjamin Glitsos.tex`
+    );
 
     const template = fs.readFileSync(templatePath, "utf8");
 
