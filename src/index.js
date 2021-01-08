@@ -14,6 +14,7 @@ const {
 } = require("./utilities");
 
 try {
+    console.log(process.cwd());
     Mustache.tags = metadata.mustache.customTags;
     Mustache.escape = identity;
 
