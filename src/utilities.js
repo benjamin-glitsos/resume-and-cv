@@ -6,12 +6,12 @@ module.exports.identity = x => x;
 
 module.exports.reverse = ls => ls.slice().reverse();
 
-module.exports.logOutput = path =>
+module.exports.logOutput = path => {
     console.log(
-        chalk`{magenta.bold ${
-            metadata.general.programName
-        } (${STATE.taskNumber++}):} Wrote to {blue ${path}}`
+        chalk`{magenta.bold ${metadata.general.programName} (${STATE.taskNumber}):} Wrote to {blue ${path}}`
     );
+    STATE.taskNumber++;
+};
 
 module.exports.argSettingOrDefault = (
     commandLineArguments,
