@@ -79,25 +79,25 @@ try {
         return output;
     })();
 
-    const templatePath = path.join(".", "resources", "template.mustache.tex");
-    const outputPath = path.join(
+    const templatePathTex = path.join(
         ".",
-        "output",
-        `${data.documentName} of Benjamin Glitsos.tex`
+        "resources",
+        "template.mustache.tex"
     );
+    const outputPath = extension =>
+        path.join(".", `${data.documentName} of Benjamin Glitsos.${extension}`);
+    const outputPathTex = outputPath("tex");
+    const outputPathPdf = outputPath("pdf");
 
-    const template = fs.readFileSync(templatePath, "utf8");
+    const template = fs.readFileSync(templatePathTex, "utf8");
 
-    fs.writeFileSync(outputPath, Mustache.render(template, data));
+    fs.writeFileSync(outputPathTex, Mustache.render(template, data));
 
-    console.log(logNumber() + chalk`Wrote to {blue ${outputPath}}`);
-} catch (error) {
-    console.error(error);
-}
+    console.log(logNumber() + chalk`Wrote to {blue ${outputPathTex}}`);
 
-try {
-    // execSync(`pdflatex ${data.outputPath}`);
-    console.log(logNumber() + chalk`Wrote to {blue ${""}}`);
+    // execSync(`pdflatex ${outputPathPdf}`);
+
+    console.log(logNumber() + chalk`Wrote to {blue ${outputPathPdf}}`);
 } catch (error) {
     console.error(error);
 }
