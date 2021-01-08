@@ -45,7 +45,9 @@ try {
     );
 
     console.log(
-        chalk.yellow(`${GLOBALS.taskNumber++}) Wrote to ${data.outputPath}`)
+        chalk`{magenta.bold ${GLOBALS.taskNumber++})} Wrote to ${
+            data.outputPath
+        }`
     );
 } catch (error) {
     console.error(error);
