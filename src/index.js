@@ -1,7 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 const Mustache = require("mustache");
-const { execSync } = require("child_process");
 const chalk = require("chalk");
 const match = require("switchcase");
 const { STATE } = require("./state");
@@ -10,7 +9,8 @@ const {
     identity,
     reverse,
     logOutput,
-    argSettingOrDefault
+    argSettingOrDefault,
+    execSyncPrint
 } = require("./utilities");
 
 try {
@@ -95,7 +95,7 @@ try {
 
     logOutput(outputPathTex);
 
-    execSync(`pdflatex "${outputPathTex}"`);
+    execSyncPrint(`pdflatex "${outputPathTex}"`);
 
     logOutput(outputPathPdf);
 } catch (error) {

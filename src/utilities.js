@@ -1,3 +1,4 @@
+const { execSync } = require("child_process");
 const chalk = require("chalk");
 const { STATE } = require("./state");
 const { metadata } = require("./metadata");
@@ -20,3 +21,7 @@ module.exports.argSettingOrDefault = (
 ) =>
     commandLineArguments.find(el => Object.values(selections).includes(el)) ||
     defaultVal;
+
+module.exports.execSyncPrint = command => {
+    execSync(command, { stdio: "inherit" });
+};
