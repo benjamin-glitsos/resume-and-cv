@@ -3,11 +3,14 @@ const Mustache = require("mustache");
 const { execSync } = require("child_process");
 const chalk = require("chalk");
 
-const GLOBALS = {
+const STATE = {
     taskNumber: 1
 };
 
 const settings = {
+    general: {
+        programName: "Resume Templater"
+    },
     selections: {
         documentType: {
             RESUME: "res",
@@ -23,6 +26,9 @@ const settings = {
         customTags: ["<&", "&>"]
     }
 };
+
+const logNumber = () =>
+    chalk`{magenta.bold ${settings.general.programName.toUpperCase()} (${STATE.taskNumber++}):} `;
 
 const data = (() => {
     const arguments = process.argv.slice(2);
@@ -44,11 +50,7 @@ try {
         Mustache.render(template, data, {}, settings.mustache.customTags)
     );
 
-    console.log(
-        chalk`{magenta.bold ${GLOBALS.taskNumber++})} Wrote to {blue ${
-            data.outputPath
-        }}`
-    );
+    console.log(logNumber() + chalk`Wrote to {blue ${data.outputPath}}`);
 } catch (error) {
     console.error(error);
 }
