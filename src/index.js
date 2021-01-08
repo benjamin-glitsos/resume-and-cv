@@ -19,7 +19,7 @@ const data = (() => {
 })();
 
 try {
-    const template = fs.readFileSync("./src/index.mustache.tex", "utf8");
+    const template = fs.readFileSync("./src/template.mustache.tex", "utf8");
 
     fs.writeFileSync(
         data.outputPath,
