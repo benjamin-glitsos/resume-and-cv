@@ -1,9 +1,14 @@
 const fs = require("fs");
 const Mustache = require("mustache");
 const { execSync } = require("child_process");
+const chalk = require("chalk");
+
+const GLOBALS = {
+    taskNumber: 1
+};
 
 const settings = {
-    options: {
+    selections: {
         documentType: {
             RESUME: "res",
             CV: "cv"
@@ -39,7 +44,9 @@ try {
         Mustache.render(template, data, {}, settings.mustache.customTags)
     );
 
-    console.log(`Wrote to ${data.outputPath}`);
+    console.log(
+        chalk.yellow(`${GLOBALS.taskNumber++}) Wrote to ${data.outputPath}`)
+    );
 } catch (error) {
     console.error(error);
 }
