@@ -5,7 +5,12 @@ const chalk = require("chalk");
 const match = require("switchcase");
 const { STATE } = require("./state");
 const { metadata } = require("./metadata");
-const { identity, logNumber, argSettingOrDefault } = require("./utilities");
+const {
+    identity,
+    reverse,
+    logNumber,
+    argSettingOrDefault
+} = require("./utilities");
 
 try {
     Mustache.tags = metadata.mustache.customTags;
@@ -40,6 +45,11 @@ try {
             default: String.raw`R\'{E}SUM\'{E}`
         })(documentType);
 
+        output.introduction = match({
+            default:
+                "Three years' experience in account management involving business analysis and project management of web applications and information systems. Skilled in written and verbal communication and driven by a strong passion for technology."
+        })(jobType);
+
         output.topItems = (() => {
             const items = [
                 "Business analysis for an information system of an ASX50 company.",
@@ -47,8 +57,8 @@ try {
             ];
 
             return match({
-                [jobTypes.PM]: items.slice().reverse(),
-                [jobTypes.QA]: items.slice().reverse(),
+                [jobTypes.PM]: reverse(items),
+                [jobTypes.QA]: reverse(items),
                 default: items
             })(jobType);
         })();
@@ -70,6 +80,7 @@ try {
 
 try {
     // execSync(`pdflatex ${data.outputPath}`);
+    console.log(logNumber() + chalk`Wrote to {blue ${""}}`);
 } catch (error) {
     console.error(error);
 }
