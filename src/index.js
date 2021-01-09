@@ -3,6 +3,7 @@ const fs = require("fs");
 const Mustache = require("mustache");
 const chalk = require("chalk");
 const match = require("switchcase");
+const { oneLine } = require("common-tags");
 const { STATE } = require("./state");
 const { metadata } = require("./metadata");
 const {
@@ -96,7 +97,11 @@ try {
 
     logOutput(outputPathTex);
 
-    execSyncPrint(`pdflatex "${outputPathTex}"`);
+    execSyncPrint(oneLine`
+        rm *.pdf;
+        pdflatex "${outputPathTex}";
+        rm *.aux *.log *.out *.tex;
+    `);
 
     logOutput(outputPathPdf);
 } catch (error) {
