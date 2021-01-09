@@ -98,9 +98,12 @@ try {
     logOutput(outputPathTex);
 
     execSyncPrint(oneLine`
-        rm *.pdf;
-        pdflatex "${outputPathTex}";
-        rm *.aux *.log *.out *.tex;
+    rm *.pdf;
+    cd resources/
+    pdflatex "${outputPathTex}";
+    rm *.aux *.log *.out *.tex;
+    mv "${outputPathTex}" "../${outputPathTex}"
+    cd ..
     `);
 
     logOutput(outputPathPdf);
