@@ -1,18 +1,15 @@
 const { execSync } = require("child_process");
 const chalk = require("chalk");
-const { STATE } = require("./state");
 const { metadata } = require("./metadata");
 
 module.exports.identity = x => x;
 
 module.exports.reverse = ls => ls.slice().reverse();
 
-module.exports.logOutput = path => {
+module.exports.logMessage = message =>
     console.log(
-        chalk`{magenta.bold ${metadata.general.programName} (${STATE.taskNumber}):} Wrote to {blue ${path}}`
+        chalk`{magenta.bold ${metadata.general.programName}:} {blue ${message}}`
     );
-    STATE.taskNumber++;
-};
 
 module.exports.argSettingOrDefault = (
     commandLineArguments,

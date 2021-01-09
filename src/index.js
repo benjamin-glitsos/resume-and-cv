@@ -4,12 +4,11 @@ const Mustache = require("mustache");
 const chalk = require("chalk");
 const match = require("switchcase");
 const { oneLine } = require("common-tags");
-const { STATE } = require("./state");
 const { metadata } = require("./metadata");
 const {
     identity,
     reverse,
-    logOutput,
+    logMessage,
     argSettingOrDefault,
     execSyncPrint
 } = require("./utilities");
@@ -81,32 +80,35 @@ try {
         return output;
     })();
 
-    const templatePathTex = path.join(
-        ".",
-        "resources",
-        "template.mustache.tex"
+    const templateFilename = "template.mustache.tex";
+    const outputFilename = extension =>
+        `${data.documentName} of Benjamin Glitsos.${extension}`;
+
+    const template = fs.readFileSync(
+        path.join("resources", templateFilename),
+        "utf8"
     );
-    const outputPath = extension =>
-        path.join(".", `${data.documentName} of Benjamin Glitsos.${extension}`);
-    const outputPathTex = outputPath("tex");
-    const outputPathPdf = outputPath("pdf");
 
-    const template = fs.readFileSync(templatePathTex, "utf8");
+    fs.mkdirSync("build");
+    fs.writeFileSync(
+        path.join("build", outputFilename("tex")),
+        Mustache.render(template, data)
+    );
 
-    fs.writeFileSync(outputPathTex, Mustache.render(template, data));
-
-    logOutput(outputPathTex);
-
-    execSyncPrint(oneLine`
+    const commands = oneLine`
     rm *.pdf;
-    cd resources/
-    pdflatex "${outputPathTex}";
-    rm *.aux *.log *.out *.tex;
-    mv "${outputPathTex}" "../${outputPathTex}"
-    cd ..
-    `);
+    cp resources/resume.cls build/resume.cls;
+    cd build/;
+    pdflatex "${outputFilename("tex")}";
+    mv "${outputFilename("pdf")}" "../${outputFilename("pdf")}";
+    cd ..;
+    rm -r build/;
+    `;
 
-    logOutput(outputPathPdf);
+    logMessage(commands);
+    execSyncPrint(commands);
+
+    logMessage("Done.");
 } catch (error) {
     console.error(error);
 }
