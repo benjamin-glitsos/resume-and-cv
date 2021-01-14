@@ -20,6 +20,7 @@
         "chalk": "^4.1.0",
         "common-tags": "^1.8.0",
         "mustache": "^4.1.0",
-        "switchcase": "^1.0.11"
+        "switchcase": "^1.0.11",
+        "yaml": "^1.10.0"
     }
 }

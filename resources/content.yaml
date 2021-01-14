@@ -1,0 +1,42 @@
+documentName:
+    cv: CV
+    resume: Resume
+
+documentType:
+    cv: CURRICULUM VITAE
+    resume: >
+        R\'{E}SUM\'{E}
+
+
+intro:
+    ba: Two years' experience in business analysis and project management of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
+
+    pm: Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
+
+    qa: Two years' experience in quality assurance and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
+
+tonic:
+    ba:
+        - Business analysis of a globally distributed information system of an ASX50 company.
+        - Project management of the entire life cycle (SDLC) of web developments (6-month to 1-year duration).
+        - Stakeholder management of four major clients of the agency and their first point of contact.
+        - Compiled Requirements Documents, Scope Statements, and other artefacts.
+        - Timelining and resource management using Microsoft Project.
+        - Worked in an Agile environment, and lead morning scrum meetings alongside the head developer.
+        - Wrote user stories in Jira and managed them within the Sprints and Epics.
+        - Performed Functional and E2E testing and coded Unit and Regression Tests. Wrote test scripts for User Acceptance Testing.
+        - Web development using SQL, Git, Javascript and Node.js, 3rd-party APIs, Postman, et al.
+        - Wrote the agency's Privacy Policy, Information Security Policy, Vulnerability Management Policy, et al.
+        - Consistently met deadlines in a fast-paced agency environment with numerous responsibilities
+
+    pm:
+        - Project management of large-scale web developments along with ERP integration.
+        - Business analysis for an information system of an ASX50 company.
+        - Timelining and resource management using Agile and Waterfall methodologies (Microsoft Project et al).
+        - Managed the entire development life cycle (SDLC) including scoping and QA testing.
+        - Wrote software documentation and provided technical support to clients.
+        - Conducted market and technical research and wrote reports for stakeholders.
+        - Contributed to complex UX storyboarding, such as for a product selector of over 300,000 items.
+        - Consistently met deadlines in a fast-paced agency environment with numerous responsibilities.
+        - Web development using SQL, Git, Javascript and Node.js, various APIs, Postman, et al.
+        - The digital account manager for four major clients of the agency, having managed over $1mil in spend.

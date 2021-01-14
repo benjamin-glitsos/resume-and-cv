@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const Mustache = require("mustache");
+const yaml = require("yaml");
 const chalk = require("chalk");
 const match = require("switchcase");
 const { oneLine } = require("common-tags");
@@ -14,9 +15,12 @@ const {
 } = require("./utilities");
 
 try {
-    console.log(process.cwd());
     Mustache.tags = metadata.mustache.customTags;
     Mustache.escape = identity;
+
+    const content = yaml.parse(
+        fs.readFileSync(path.join("resources", "content.yaml"), "utf8")
+    );
 
     const data = (() => {
         const commandLineArguments = process.argv.slice(2);
@@ -38,44 +42,26 @@ try {
         const output = {};
 
         output.documentName = match({
-            [documentTypes.CV]: "CV",
-            default: "Resume"
+            [documentTypes.CV]: content.documentName.cv,
+            default: content.documentName.resume
         })(documentType);
 
         output.headerName = match({
-            [documentTypes.CV]: "CURRICULUM VITAE",
-            default: String.raw`R\'{E}SUM\'{E}`
+            [documentTypes.CV]: content.documentType.cv,
+            default: content.documentType.resume
         })(documentType);
 
-        output.introduction = (() => {
-            const BAIntro =
-                "Two years' experience in business analysis and project management of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
+        output.introduction = match({
+            [jobTypes.PM]: content.intro.pm,
+            [jobTypes.QA]: content.intro.qa,
+            default: content.intro.ba
+        })(jobType);
 
-            const PMIntro =
-                "Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
-
-            const QAIntro =
-                "Two years' experience in quality assurance and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.";
-
-            return match({
-                [jobTypes.PM]: PMIntro,
-                [jobTypes.QA]: QAIntro,
-                default: BAIntro
-            })(jobType);
-        })();
-
-        output.topItems = (() => {
-            const items = [
-                "Business analysis for an information system of an ASX50 company.",
-                "Project management of large-scale web developments along with ERP integration."
-            ];
-
-            return match({
-                [jobTypes.PM]: reverse(items),
-                [jobTypes.QA]: reverse(items),
-                default: items
-            })(jobType);
-        })();
+        output.tonic = match({
+            [jobTypes.PM]: content.tonic.pm,
+            [jobTypes.QA]: content.tonic.ba,
+            default: content.tonic.ba
+        })(jobType);
 
         return output;
     })();
