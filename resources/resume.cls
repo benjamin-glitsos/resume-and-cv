@@ -24,6 +24,8 @@
 
 \RequirePackage{enumitem}
 
+\usepackage[T1]{fontenc}
+
 % Options --------------------
 
 \DeclareOption{draft}{\overfullrule=5pt}
