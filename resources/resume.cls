@@ -26,6 +26,8 @@
 
 \usepackage[T1]{fontenc}
 
+\usepackage{setspace}
+
 % Options --------------------
 
 \DeclareOption{draft}{\overfullrule=5pt}
