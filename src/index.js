@@ -54,15 +54,34 @@ try {
         output.introduction = match({
             [jobTypes.PM]: content.intro.pm,
             [jobTypes.PA]: content.intro.pa,
-            [jobTypes.QA]: content.intro.qa,
             default: content.intro.ba
         })(jobType);
 
         output.tonic = match({
             [jobTypes.PM]: content.tonic.pm,
             [jobTypes.PA]: content.tonic.pa,
-            [jobTypes.QA]: content.tonic.ba,
             default: content.tonic.ba
+        })(jobType);
+
+        output.freelanceWebDev = match({
+            [jobTypes.PM]: content.freelanceWebDev.ba,
+            [jobTypes.PA]: content.freelanceWebDev.pa,
+            default: content.freelanceWebDev.ba
+        })(jobType);
+
+        output.dlook = match({
+            [jobTypes.PM]: content.dlook.ba,
+            [jobTypes.PA]: content.dlook.pa,
+            default: content.dlook.ba
+        })(jobType);
+
+        output.partTimeEducationJobs = match({
+            default: content.partTimeEducationJobs.ba
+        })(jobType);
+
+        output.education = match({
+            [jobTypes.PA]: content.education.pa,
+            default: content.education.ba
         })(jobType);
 
         return output;

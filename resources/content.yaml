@@ -13,9 +13,7 @@ intro:
 
     pm: Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
 
-    pa: Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
-
-    qa: Two years' experience in quality assurance and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and driven by a strong passion for technology.
+    pa: Two years' experience in project management and business analysis of web applications and information systems. Additional years' experience in web development and professional writing. Skilled in verbal and written communication and in quickly learning new systems.
 
 tonic:
     ba:
@@ -51,7 +49,32 @@ tonic:
         - Timelining and resource management using Microsoft Project.
         - Worked in an Agile environment, and lead morning scrum meetings alongside the head developer.
         - Wrote user stories in Jira and managed them within the Sprints and Epics.
-        - Performed Functional and E2E testing and coded Unit and Regression Tests. Wrote test scripts for User Acceptance Testing.
-        - Web development using SQL, Git, Javascript and Node.js, 3rd-party APIs, Postman, et al.
         - Wrote the agency's Privacy Policy, Information Security Policy, Vulnerability Management Policy, et al.
         - Consistently met deadlines in a fast-paced agency environment with numerous responsibilities.
+
+freelanceWebDev:
+    ba:
+        - Built websites using Drupal and WordPress with UX-optimisation towards marketing KPIs.
+        - Attended trade shows to gain clients by informing business owners about digital marketing concepts.
+    pa:
+        - Attended trade shows to gain clients by informing business owners about digital marketing concepts.
+
+dlook:
+    ba:
+        - Client management and Salesforce lead management regarding digital projects.
+        - Professional writing of entertainment articles, websites, advertising, technical content, et al.
+    pa:
+        - Client management and Salesforce lead management regarding digital projects.
+        - Office administration activities including obtaining quotes, content management, and reading mail.
+        - Professional writing of entertainment articles, websites, advertising, technical content, et al.
+
+partTimeEducationJobs:
+    ba:
+        - Worked as a primary and high school tutor, as a McDonald's cashier, and as a bartender.
+
+education:
+    ba:
+        - 74 WAM
+    pa:
+        - 74 WAM.
+        - Five high distinctions -- PSYC1002, ENGL2666, ENGL1011, LNGS1002, MKTG1001.
