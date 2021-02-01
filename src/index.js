@@ -53,12 +53,14 @@ try {
 
         output.introduction = match({
             [jobTypes.PM]: content.intro.pm,
+            [jobTypes.PA]: content.intro.pa,
             [jobTypes.QA]: content.intro.qa,
             default: content.intro.ba
         })(jobType);
 
         output.tonic = match({
             [jobTypes.PM]: content.tonic.pm,
+            [jobTypes.PA]: content.tonic.pa,
             [jobTypes.QA]: content.tonic.ba,
             default: content.tonic.ba
         })(jobType);

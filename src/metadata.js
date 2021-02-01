@@ -10,6 +10,7 @@ module.exports.metadata = {
         jobTypes: {
             BA: "ba",
             PM: "pm",
+            PA: "pa",
             QA: "qa"
         }
     },
