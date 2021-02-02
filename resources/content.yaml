@@ -74,10 +74,10 @@ partTimeEducationJobs:
 
 education:
     ba:
-        - 74 WAM
-    pa:
         - 74 WAM.
-        - Five high distinctions -- PSYC1002, ENGL2666, ENGL1011, LNGS1002, MKTG1001.
+        - >
+            Five high distinctions: PSYC1002, ENGL2666, ENGL1011, LNGS1002 \& MKTG1001.
+
 
 additionalLearning:
     ba: >

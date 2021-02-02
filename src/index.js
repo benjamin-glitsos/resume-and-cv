@@ -80,7 +80,6 @@ try {
         })(jobType);
 
         output.education = match({
-            [jobTypes.PA]: content.education.pa,
             default: content.education.ba
         })(jobType);
 
