@@ -83,11 +83,6 @@ try {
             default: content.education.ba
         })(jobType);
 
-        output.additionalLearning = match({
-            [jobTypes.PA]: content.additionalLearning.pa,
-            default: content.additionalLearning.ba
-        })(jobType);
-
         return output;
     })();
 
